@@ -2,7 +2,7 @@
 
 describe("Login", () => {
   beforeEach(() => {
-    cy.visit(Cypress.env(URL));
+    cy.visit("/");
   });
 
   it("Login com dados validos deve permitira a entrada", () => {
