@@ -6,23 +6,18 @@ describe("Login", () => {
     });
 
     it("Login com dados validos deve permitira a entrada", () => {
-        cy.fixture("credenciais").then((credencias) => {
-            cy.get("#username").click().type(credencias.valida.usuario);
-            cy.get("#senha").click().type(credencias.valida.senha);
-        });
+        //act
+        cy.fazerLoginComCredenciaisValidas();
 
-        cy.contains("button", "Entrar").click();
-
+        //assert
         cy.contains("h4", "Realizar Transferência").should("be.visible");
     });
 
     it("Login com dados invalidos deve aparecer uma mensagem de erro", () => {
-        cy.fixture("credenciais").then((credenciais) => {
-            cy.get("#username").click().type(credenciais.invalida.usuario);
-            cy.get("#senha").click().type(credenciais.invalida.senha);
-        });
-        cy.contains("button", "Entrar").click();
+        //act
+        cy.fazerLoginComCredenciaisInvalidas();
 
-        cy.get(".toast").should("have.text", "Erro no login. Tente novamente.");
+        //assert
+        cy.verificarMensagemToast("Erro no login. Tente novamente.");
     });
 });
