@@ -3,7 +3,6 @@ Cypress.Commands.add("fazerLoginComCredenciaisValidas", () => {
         cy.get("#username").click().type(credencias.valida.usuario);
         cy.get("#senha").click().type(credencias.valida.senha);
     });
-
     cy.contains("button", "Entrar").click();
 });
 
